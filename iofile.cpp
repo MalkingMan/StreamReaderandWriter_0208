@@ -21,8 +21,17 @@ int main()
         cout <<"-";
         //Mendapatkan setiap karakter dalam satu baris
         getline(cin, baris);
-        //loop akan berhenti jika anda memasukkan karakter q
-        
+        //Loop akan berhenti jika anda memasukkan karakter q
+        if (baris == "q") break;
+		//Menulis dan memasukkan nilai dari 'baris' ke dalam file
+		outfile << baris << endl;
     }
+    //selesai dalam menulis sekarang tutup filenya
+    outfile.close();
+
+    //Membuka file dalam mode membaca
+    ifstream infile;
+    //Menunjuk ke sebuah file
+	infile.open("contohfile.txt");
     
 }
