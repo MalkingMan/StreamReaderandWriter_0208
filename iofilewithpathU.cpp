@@ -7,6 +7,10 @@ using namespace std;
 int main()
 {
     string baris;
+    string NamaFile;
+
+    cout << "Masukkan Nama File :";
+    cin >> NamaFile;
 	
     // Mmebuka file dalam mode menulis.
 	ofstream outfile;
@@ -26,3 +30,28 @@ int main()
 		//Menulis dan memasukkan nilai dari 'baris' ke dalam file
 		outfile << baris << endl;
     }
+     //selesai dalam menulis sekarang tutup filenya
+    outfile.close();
+
+    //Membuka file dalam mode membaca
+    ifstream infile;
+    //Menunjuk ke sebuah file
+	infile.open(NamaFile + ".txt", ios::in);
+
+    cout << endl << ">= Mmebuka dan membaca file" << endl;
+    //Jika file ada maka
+    if (infile.is_open())
+    {
+        //Melakukan perulangan setiap baris
+		while (getline(infile, baris))
+        {
+            //Dan tampilkan disini
+            cout << baris << '/n';
+        }
+        //Tutup file tersebut setelah selesai
+        infile.close();
+    }
+    //Jika tidak ditemukan file maka akan menampilkan ini
+	else cout << "Unable to open file";
+	return 0;
+}
